@@ -1,0 +1,15 @@
+seed: 42
+
+data:
+  img_size: [224, 224]
+  val_split: 0.1
+  test_split: 0.1
+
+train:
+  batch_size: 32
+  epochs: 3
+  lr: 0.001
+
+labels:
+  0: cat
+  1: dog
