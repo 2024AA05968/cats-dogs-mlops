@@ -14,8 +14,7 @@ env/
 # VS Code
 .vscode/
 
-# Data & artifacts (tracked later via DVC)
-data/
+# Artifacts (generated later)
 artifacts/
 models/
 logs/
