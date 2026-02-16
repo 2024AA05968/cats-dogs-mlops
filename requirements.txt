@@ -14,8 +14,16 @@ pytest-cov==5.0.0
 fastapi==0.115.4
 uvicorn[standard]==0.32.0
 
-# --- Choose ONE framework later (we'll decide together before installing) ---
-# torch==2.4.1
-# torchvision==0.19.1
-# OR
-# tensorflow==2.16.2
+# --- Deep Learning framework (chosen) ---
+torch==2.10.0+cpu
+torchvision==0.25.0+cpu
+
+# --- Experiment tracking ---
+mlflow==2.16.0
+
+# --- Training utilities ---
+scikit-learn==1.5.2
+matplotlib==3.9.2
+pandas==2.2.2
+seaborn==0.13.2
+pyyaml==6.0.2
