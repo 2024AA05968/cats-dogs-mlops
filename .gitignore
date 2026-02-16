@@ -36,7 +36,7 @@ data/interim/*
 # Generated artifacts (not data)
 # ===============================
 artifacts/
-models/
+mlruns/
 logs/
 
 # ===============================
