@@ -1,29 +1,42 @@
-# --- Core utilities (lightweight, safe to install early) ---
+# Use PyTorch CPU wheels (required for torch==...+cpu)
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# -----------------------------
+# Core utilities
+# -----------------------------
 numpy==1.26.4
 pillow==10.4.0
 python-dotenv==1.0.1
 
-# --- Dev & testing ---
-pytest==8.3.3
-pytest-cov==5.0.0
-
-# --- Tracking & data versioning (to be installed later) ---
-
-
-# --- API for inference (we'll use in M2) ---
+# -----------------------------
+# Inference API (M2)
+# -----------------------------
 fastapi==0.115.4
 uvicorn[standard]==0.32.0
+python-multipart==0.0.9
 
-# --- Deep Learning framework (chosen) ---
+# -----------------------------
+# Deep learning (chosen: PyTorch CPU)
+# -----------------------------
 torch==2.10.0+cpu
 torchvision==0.25.0+cpu
 
-# --- Experiment tracking ---
+# -----------------------------
+# Experiment tracking (M1)
+# -----------------------------
 mlflow==2.16.0
+pyyaml==6.0.2
 
-# --- Training utilities ---
+# -----------------------------
+# Metrics & plots (M1 artifacts)
+# -----------------------------
 scikit-learn==1.5.2
 matplotlib==3.9.2
 pandas==2.2.2
 seaborn==0.13.2
-pyyaml==6.0.2
+
+# -----------------------------
+# Testing (M3 will use)
+# -----------------------------
+pytest==8.3.3
+pytest-cov==5.0.0
