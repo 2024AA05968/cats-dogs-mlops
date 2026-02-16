@@ -1,0 +1,26 @@
+# Ignore virtual env and caches
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore datasets and large artifacts
+data/
+mlruns/
+artifacts/
+logs/
+notebooks/
+
+# Git metadata
+.git/
+.gitignore
+.gitattributes
+
+# OS/IDE junk
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Optional
+requirements.lock.txt
