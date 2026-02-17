@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  cats-dogs-api:
+    image: ghcr.io/2024aa05968/cats-dogs-mlops:latest
+    container_name: cats-dogs-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
