@@ -14,11 +14,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo (with LFS)
+      - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          lfs: true
           fetch-depth: 0
+
+      # Ensure git-lfs is available (safe even if already installed)
+      - name: Install Git LFS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install --local
+
+      # Pull ONLY the model file from LFS (avoid downloading full dataset)
+      - name: Pull model artifact from Git LFS
+        run: |
+          git lfs pull --include="models/baseline_cnn.pt" --exclude=""
+          echo "== Model file details =="
+          ls -lh models/baseline_cnn.pt
+
+          echo "== First line (should NOT be LFS pointer) =="
+          head -n 1 models/baseline_cnn.pt || true
+
+          # Fail fast if still a pointer
+          if head -n 1 models/baseline_cnn.pt | grep -q "git-lfs.github.com/spec"; then
+            echo "ERROR: models/baseline_cnn.pt is still a Git LFS pointer. Failing build."
+            exit 1
+          fi
 
       - name: Log in to GHCR
         uses: docker/login-action@v3
